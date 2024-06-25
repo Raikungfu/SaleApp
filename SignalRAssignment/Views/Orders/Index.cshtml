@@ -28,7 +28,10 @@
                 Freight
             </th>
             <th>
-                Member ID
+                Member Name
+            </th>
+            <th>
+                Member Email
             </th>
             <th></th>
         </tr>
@@ -49,7 +52,10 @@
                 @Html.DisplayFor(modelItem => item.Freight)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Member.Id)
+                @Html.DisplayFor(modelItem => item.Member.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Member.Email)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |

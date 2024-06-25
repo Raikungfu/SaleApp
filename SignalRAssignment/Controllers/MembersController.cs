@@ -19,13 +19,15 @@ namespace SignalRAssignment.Controllers
     {
         private readonly SalesManagementContext _context;
         private readonly TokenService _tokenService;
+        private readonly UploadImagesService _uploadImagesService;
 
         public Member member { get; set; }
 
-        public MembersController(TokenService tokenService, SalesManagementContext context)
+        public MembersController(TokenService tokenService, UploadImagesService uploadImagesService, SalesManagementContext context)
         {
             _tokenService = tokenService;
             _context = context;
+            _uploadImagesService = uploadImagesService;
         }
 
         // GET: Members
@@ -118,17 +120,22 @@ namespace SignalRAssignment.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Password,Avt,Name,Birthday,Email,Phone,City,Country,Hobby")] Member member)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Password,Avt,Name,Birthday,Email,Phone,City,Country,Hobby,ImageFile,Type")] Member member)
         {
             if (id != member.Id)
             {
                 return NotFound();
             }
 
+            ModelState.Remove("Avt");
             if (ModelState.IsValid)
             {
                 try
                 {
+                    if (member.ImageFile != null)
+                    {
+                        member.Avt = "images/" + _uploadImagesService.uploadImage(member.ImageFile, "images/");
+                    }
                     _context.Update(member);
                     await _context.SaveChangesAsync();
                 }
@@ -197,7 +204,8 @@ namespace SignalRAssignment.Controllers
             var member = await ValidateMemberAsync(m.Email, m.Password);
             if (member == null)
             {
-                return Unauthorized();
+                ViewData["ErrorMessage"] = "ID/Password not correct!";
+                return View();
             }
 
 
@@ -212,32 +220,31 @@ namespace SignalRAssignment.Controllers
 
             await HttpContext.SignInAsync("SaleAppSaintRai", new ClaimsPrincipal(claimsIdentity));
 
-            var productId = HttpContext.Session.GetInt32("ProductId");
-            var quantity = HttpContext.Session.GetInt32("Quantity");
+            int? productId = TempData["ProductId"] as int?;
+            int? quantity = TempData["Quantity"] as int?;
 
             if (productId.HasValue && quantity.HasValue)
             {
-               
-                    var cartItem = await _context.CartItems
-                        .FirstOrDefaultAsync(c => c.ProductId == productId.Value && c.MemberId == member.Id);
+                var cartItem = await _context.CartItems
+                    .FirstOrDefaultAsync(c => c.ProductId == productId.Value && c.MemberId == member.Id);
 
-                    if (cartItem != null)
+                if (cartItem != null)
+                {
+                    cartItem.Quantity += quantity.Value;
+                }
+                else
+                {
+                    cartItem = new CartItem
                     {
-                        cartItem.Quantity += quantity.Value;
-                    }
-                    else
-                    {
-                        cartItem = new CartItem
-                        {
-                            ProductId = productId.Value,
-                            Quantity = quantity.Value,
-                            MemberId = member.Id
-                        };
-                    _context.CartItems.Add(cartItem);
-                    }
+                        ProductId = productId.Value,
+                        Quantity = quantity.Value,
+                        MemberId = member.Id
+                    };
+                _context.CartItems.Add(cartItem);
+                }
 
-                    await _context.SaveChangesAsync();
-                    TempData["SuccessMessage"] = "Product added to cart successfully!";
+                await _context.SaveChangesAsync();
+                TempData["SuccessMessage"] = "Product added to cart successfully!";
 
                 HttpContext.Session.Remove("ProductId");
                 HttpContext.Session.Remove("Quantity");

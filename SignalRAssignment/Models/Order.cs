@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SignalRAssignment.Models;
 
@@ -17,7 +18,7 @@ public partial class Order
 
     public int? Freight { get; set; }
 
-    public virtual Member Member { get; set; } = null!;
+	public virtual Member Member { get; set; } = null!;
 
     public virtual ICollection<OrderDetail> OrderDetails { get; set; } = new List<OrderDetail>();
 }

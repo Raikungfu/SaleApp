@@ -44,7 +44,7 @@ namespace SignalRAssignment.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Search(string? str = "")
         {
-            var products = await _searchService.SearchFunc(str);
+            var products = await _searchService.SearchProHomeFunc(str);
             return View("Index", products);
         }
     }

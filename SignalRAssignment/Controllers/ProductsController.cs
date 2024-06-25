@@ -112,6 +112,7 @@ namespace SignalRAssignment.Controllers
             }
             ModelState.Remove("Supplier");
             ModelState.Remove("Category");
+            ModelState.Remove("Image");
 
             if (ModelState.IsValid)
             {
@@ -186,7 +187,7 @@ namespace SignalRAssignment.Controllers
         
         public async Task<IActionResult> Search(string? str = "")
         {
-            var products = await _searchService.SearchFunc(str);
+            var products = await _searchService.SearchProFunc(str);
             return View("Index", products);
         }
     }

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SignalRAssignment")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4e85edcbaef31c0feefb895e4dd258db957af379")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6cdb75134af1ff030f5bc0d3083912a521570861")]
 [assembly: System.Reflection.AssemblyProductAttribute("SignalRAssignment")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SignalRAssignment")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

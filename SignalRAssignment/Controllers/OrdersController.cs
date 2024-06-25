@@ -26,23 +26,21 @@ namespace SignalRAssignment.Controllers
         public async Task<IActionResult> Index(int pageNumber = 1)
         {
             List<Order> orders = [];
+            int totalOrderss = 0;
             if (User.IsInRole("Staff"))
             {
-                orders = await _context.Orders.Include(o => o.Member)
-            .Skip((pageNumber - 1) * 10)
-            .Take(10)
-            .ToListAsync();
-            }else if (User.IsInRole("User"))
+                orders = await _context.Orders.Include(o => o.Member).OrderByDescending(o => o.OrderDate).Skip((pageNumber - 1) * 10).Take(10).ToListAsync();
+
+                totalOrderss = await _context.Orders.CountAsync();
+            }
+            else if (User.IsInRole("User"))
             {
                 var memberIdClaim = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value);
 
-                orders = await _context.Orders.Where(m => m.MemberId == memberIdClaim).Include(o => o.Member)
-            .Skip((pageNumber - 1) * 10)
-            .Take(10)
-            .ToListAsync();
+                orders = await _context.Orders.Where(m => m.MemberId == memberIdClaim).Include(o => o.Member).OrderByDescending(o => o.OrderDate).Skip((pageNumber - 1) * 10).Take(10).ToListAsync();
+                totalOrderss = await _context.Orders.Where(m => m.MemberId == memberIdClaim).CountAsync();
             }
 
-            var totalOrderss = await _context.Orders.CountAsync();
 
             var viewModel = new PaginatedList<Order>(orders, totalOrderss, pageNumber, 10);
 
@@ -212,5 +210,5 @@ namespace SignalRAssignment.Controllers
           return (_context.Orders?.Any(e => e.OrderId == id)).GetValueOrDefault();
         }
 
-    }
+	}
 }

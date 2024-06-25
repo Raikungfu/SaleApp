@@ -8,8 +8,6 @@ using System.Threading.Tasks;
 
 namespace SignalRAssignment.Controllers
 {
-
-    [Authorize]
     public class CartController : Controller
     {
         private readonly SalesManagementContext _dbContext;
@@ -25,8 +23,8 @@ namespace SignalRAssignment.Controllers
         {
             if (!User.Identity.IsAuthenticated)
             {
-                HttpContext.Session.SetInt32("ProductId", productId);
-                HttpContext.Session.SetInt32("Quantity", quantity);
+                TempData["ProductId"] = productId;
+                TempData["Quantity"] = quantity;
                 return RedirectToAction("Login", "Members");
             }
 
@@ -76,7 +74,7 @@ namespace SignalRAssignment.Controllers
             var member = await _dbContext.Members.FirstOrDefaultAsync(m => m.Email == email);
             if (member == null)
             {
-                return Unauthorized();
+                return RedirectToAction("Login", "Members");
             }
 
             var cartItems = await _dbContext.CartItems
@@ -129,12 +127,13 @@ namespace SignalRAssignment.Controllers
                 OrderDate = DateTime.UtcNow,
                 RequiredDate = DateTime.UtcNow.AddDays(5),
                 ShippedDate = DateTime.UtcNow.AddDays(1),
+                Freight = 10,
                 OrderDetails = cartItems.Select(item => new OrderDetail
                 {
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
                     UnitPrice = item.Product.UnitPrice,
-                    Discount = 0 // Assuming no discount
+                    Discount = 0
                 }).ToList()
             };
 

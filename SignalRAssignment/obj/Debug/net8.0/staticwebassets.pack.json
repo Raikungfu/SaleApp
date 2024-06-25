@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\0d8c382c-f781-48c5-b45d-02e980c3ca78_cach_lam_banh_pizza_thom_ngon_chuan_nha_hang_2_43d4f180fd.webp",
+      "PackagePath": "staticwebassets\\images\\0d8c382c-f781-48c5-b45d-02e980c3ca78_cach_lam_banh_pizza_thom_ngon_chuan_nha_hang_2_43d4f180fd.webp"
+    },
+    {
       "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\1562209370104_2053820.jpg",
       "PackagePath": "staticwebassets\\images\\1562209370104_2053820.jpg"
     },
@@ -23,6 +27,14 @@
     {
       "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\2055816.png",
       "PackagePath": "staticwebassets\\images\\2055816.png"
+    },
+    {
+      "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\3337cecf-9466-4d67-90a7-6817273d3ff1_tien-nghich_250x350.jpeg",
+      "PackagePath": "staticwebassets\\images\\3337cecf-9466-4d67-90a7-6817273d3ff1_tien-nghich_250x350.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\4ca799e6-c999-4ff8-95c2-487c650e8ab9_cach_lam_banh_pizza_thom_ngon_chuan_nha_hang_2_43d4f180fd.webp",
+      "PackagePath": "staticwebassets\\images\\4ca799e6-c999-4ff8-95c2-487c650e8ab9_cach_lam_banh_pizza_thom_ngon_chuan_nha_hang_2_43d4f180fd.webp"
     },
     {
       "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\638107858631679725_iphone-14-pro-max-dd-1.jpg",
@@ -41,6 +53,10 @@
       "PackagePath": "staticwebassets\\images\\avtAdmin.jpeg"
     },
     {
+      "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\b10ea999-b0ba-407e-af2e-5909d8352e7a_gintama-sakata-gintoki-wallpaper-preview.jpg",
+      "PackagePath": "staticwebassets\\images\\b10ea999-b0ba-407e-af2e-5909d8352e7a_gintama-sakata-gintoki-wallpaper-preview.jpg"
+    },
+    {
       "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\bb2d9b01-5262-4a85-b660-647fe004c1af_specs-img.jpg",
       "PackagePath": "staticwebassets\\images\\bb2d9b01-5262-4a85-b660-647fe004c1af_specs-img.jpg"
     },
@@ -57,8 +73,16 @@
       "PackagePath": "staticwebassets\\images\\cach-lam-banh-macaron-thom-ngon-nhieu-huong-vi-202201110129065345.jpg"
     },
     {
+      "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\ce12ff54-5791-43da-a332-afe74b9ff28b_gintama-sakata-gintoki-wallpaper-preview.jpg",
+      "PackagePath": "staticwebassets\\images\\ce12ff54-5791-43da-a332-afe74b9ff28b_gintama-sakata-gintoki-wallpaper-preview.jpg"
+    },
+    {
       "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\cover.png",
       "PackagePath": "staticwebassets\\images\\cover.png"
+    },
+    {
+      "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\f9445653-72d9-40f1-9d3f-9692f4ce2440_4141-normal.jpg",
+      "PackagePath": "staticwebassets\\images\\f9445653-72d9-40f1-9d3f-9692f4ce2440_4141-normal.jpg"
     },
     {
       "Id": "C:\\Users\\Raiku\\source\\repos\\SignalRAssignment\\SignalRAssignment\\wwwroot\\images\\free-filter-1634626-1389150.png",
